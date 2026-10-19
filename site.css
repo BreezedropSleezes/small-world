@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@500;600&display=swap");
+
+:root {
+  --paper: #f7f2e8;
+  --ink: #2c261f;
+  --muted: #6f6456;
+  --leaf: #3d6b45;
+  --line: rgba(62, 54, 40, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(42rem 28rem at 100% -8%, rgba(123, 181, 206, 0.45), transparent 70%),
+    radial-gradient(36rem 24rem at -10% 108%, rgba(255, 192, 0, 0.28), transparent 68%),
+    var(--paper);
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 1.2rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.1rem 1.4rem 0.8rem;
+  background: linear-gradient(180deg, rgba(247, 242, 232, 0.94), rgba(247, 242, 232, 0.88) 70%, transparent);
+}
+
+.mark,
+nav a {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.mark { color: var(--ink); }
+
+nav { display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; }
+
+nav a:hover { color: var(--ink); }
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2.2rem 1.4rem 1rem;
+}
+
+.intro {
+  margin: 0 0 1rem;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 1.85rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+main p { margin: 0 0 0.9rem; }
+
+section { margin-top: 3.2rem; }
+
+h2 {
+  margin: 0 0 0.7rem;
+  color: var(--leaf);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.when {
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+footer {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2.4rem 1.4rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .intro { font-size: 1.5rem; }
+  .bar { position: static; background: transparent; }
+}
