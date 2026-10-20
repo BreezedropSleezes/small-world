@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f7f4ee">
   <title>阴影像素对齐与村庄袭击接入 · BreezedropSleezes</title>
   <meta name="description" content="开发日志 2026-10-20：阴影贴图按像素对齐，地形参与投影；村庄范围与袭击波次接入，仍待 Play 验证。">
-  <link rel="stylesheet" href="../site.css?v=5">
+  <link rel="stylesheet" href="../site.css?v=6">
 </head>
 <body>
   <header class="top">
@@ -26,6 +26,30 @@
     <p class="article-date">2026-10-20</p>
     <h1>阴影像素对齐与村庄袭击接入</h1>
     <p class="article-lead">地形开始参与墙体和山体的阴影投射，阴影贴图按像素网格对齐，镜头移动时不再漂移。村庄范围与袭击波次已经接入，仍需要进入游戏验证。</p>
+
+    <figure class="video-compare">
+      <div class="video-pair">
+        <div class="video-item">
+          <span class="video-label">修复前</span>
+          <video controls muted playsinline preload="metadata" poster="../assets/shadow-before-poster.jpg" width="1280" height="720" aria-label="阴影修复前">
+            <source src="../assets/shadow-before.mp4" type="video/mp4">
+          </video>
+          <p class="video-note">墙根漏光，阴影随镜头移动抖动。</p>
+        </div>
+        <div class="video-item">
+          <span class="video-label">修复后</span>
+          <video controls muted playsinline preload="metadata" poster="../assets/shadow-after-poster.jpg" width="1280" height="720" aria-label="阴影修复后">
+            <source src="../assets/shadow-after.mp4" type="video/mp4">
+          </video>
+          <p class="video-note">阴影贴图按像素对齐，墙根亮缝收住。</p>
+        </div>
+      </div>
+      <div class="video-tools">
+        <button class="video-sync" type="button">同时播放</button>
+        <span>修复前 5 秒，修复后 10 秒；两段均为当前开发版本。</span>
+      </div>
+      <figcaption>阴影修复前后对比。左侧修复前，右侧修复后。</figcaption>
+    </figure>
 
     <section>
       <h2>进展</h2>
@@ -59,5 +83,14 @@
       <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
     </footer>
   </main>
+  <script>
+    const syncVideos = document.querySelector('.video-sync');
+    syncVideos?.addEventListener('click', () => {
+      document.querySelectorAll('.video-pair video').forEach((video) => {
+        video.currentTime = 0;
+        video.play();
+      });
+    });
+  </script>
 </body>
 </html>

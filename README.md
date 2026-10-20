@@ -46,7 +46,7 @@ Windows 版本还没有发布；构建完成后会放在 [Releases](https://gith
 | `index.html` | 公开首页 |
 | `resident.html` | 居民智能结构页 |
 | `site.css` | 页面样式 |
-| `assets/` | 游戏截图与居民智能结构图 |
+| `assets/` | 游戏截图、居民智能结构图与开发日志视频 |
 | `log/` | 开发日志 |
 | `README.md` | 仓库说明 |
 
