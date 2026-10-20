@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>阴影像素对齐与村庄袭击接入 · BreezedropSleezes</title>
+  <meta name="description" content="开发日志 2026-10-20：阴影贴图按像素对齐，地形参与投影；村庄范围与袭击波次接入，仍待 Play 验证。">
+  <link rel="stylesheet" href="../site.css?v=5">
+</head>
+<body>
+  <header class="top">
+    <a class="name" href="../index.html">BreezedropSleezes</a>
+    <nav aria-label="主导航">
+      <a href="../index.html">项目</a>
+      <a href="../index.html#now">现在</a>
+      <a href="../index.html#resident">居民</a>
+      <a href="../index.html#notes">日志</a>
+      <a href="../index.html#about">关于</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main class="article" id="main">
+    <a class="back" href="../index.html#notes">← 返回</a>
+    <p class="article-date">2026-10-20</p>
+    <h1>阴影像素对齐与村庄袭击接入</h1>
+    <p class="article-lead">地形开始参与墙体和山体的阴影投射，阴影贴图按像素网格对齐，镜头移动时不再漂移。村庄范围与袭击波次已经接入，仍需要进入游戏验证。</p>
+
+    <section>
+      <h2>进展</h2>
+      <p>阴影方面完成两项调整：地形能够接收墙体与山体的投影；阴影贴图按像素网格对齐，并跟随视线中心移动。太阳仍保持连续转动，级联保持 4 级，分辨率保持 2048。</p>
+      <p>村庄袭击已接入基础流程：放置村旗可以划定方形范围，旗杆贴合地表；系统按 2–5 日间隔生成袭击波次。按当前规则，持有可用武器的居民会主动迎敌，未持有武器的居民留在原地。调试工具可以立旗、显示范围并立即触发一波袭击。该行为仍待 Play 验证。</p>
+      <p>战斗系统中，生命值降至 5% 时进入倒地状态。镐、斧、锄可作为武器，伤害低于刀、棒、矛。建造系统补全了领工分配与单格砌筑后的结算。</p>
+    </section>
+
+    <section>
+      <h2>学到什么</h2>
+      <p>墙根漏光与阴影抖动是两个独立问题。用全局阴影偏移修补墙根亮缝，会导致山体另一侧的阴影一起抖动。</p>
+      <p>将太阳角度量化为固定步长，会让阴影产生台阶式跳动。更稳定的做法是让阴影贴图按像素网格对齐，而不是离散化太阳角度。</p>
+    </section>
+
+    <section>
+      <h2>踩的坑</h2>
+      <p>光照脚本直接引用渲染管线程序集，编译时报找不到类型。后来将像素对齐逻辑拆到独立程序集，光照脚本不再引用该层。</p>
+      <p>袭击系统与烧窑系统的更新序号冲突，进入游戏时触发重复注册错误。袭击系统已调整到独立序号。</p>
+      <p>旗帜初始悬空，放置逻辑已改为贴合地表。</p>
+    </section>
+
+    <section>
+      <h2>下一截</h2>
+      <p>进入游戏验证两项阴影问题：镜头绕村庄移动时，阴影是否仍抖动；墙根亮缝是否已消除。</p>
+      <p>放置村旗后，确认袭击是否按 2–5 日间隔生成，持有可用武器的居民是否会主动迎敌。镐、斧、锄的攻击间隔仍需复核。</p>
+      <p>以上均为待 Play 验证项，不代表已经验收。</p>
+    </section>
+
+    <footer class="article-footer">
+      <a href="../index.html#notes">← 返回</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
