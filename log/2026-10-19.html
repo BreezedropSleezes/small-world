@@ -3,61 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4ebd6">
-  <title>第一阶段收尾，居民行为接线 · BreezedropSleezes</title>
-  <meta name="description" content="开发日志 2026-10-19：世界自转完成，居民行为接线，建造链路仍在补。">
-  <link rel="stylesheet" href="../site.css?v=12">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>第一阶段收尾：居民行为接入 · BreezedropSleezes</title>
+  <meta name="description" content="开发日志 2026-10-19：世界模拟完成独立运行，居民行为骨架接入，建造链路仍在开发中。">
+  <link rel="stylesheet" href="../site.css?v=5">
 </head>
 <body>
-  <a class="skip" href="#main">跳到正文</a>
-
-  <header class="site-header">
-    <a class="brand" href="../index.html">
-      <span class="brand-mark" aria-hidden="true">B</span>
-      <span class="brand-name">BreezedropSleezes</span>
-    </a>
-    <nav class="site-nav" aria-label="主导航">
-      <a href="../index.html#project">项目</a>
-      <a href="../index.html#shots">画面</a>
-      <a href="../index.html#progress">进度</a>
-      <a href="../index.html#tech">技术</a>
-      <a href="../index.html#log">日志</a>
+  <header class="top">
+    <a class="name" href="../index.html">BreezedropSleezes</a>
+    <nav aria-label="主导航">
+      <a href="../index.html">项目</a>
+      <a href="../index.html#now">现在</a>
+      <a href="../index.html#resident">居民</a>
+      <a href="../index.html#notes">日志</a>
       <a href="../index.html#about">关于</a>
-      <a class="nav-github" href="https://github.com/BreezedropSleezes/small-world">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
     </nav>
   </header>
 
   <main class="article" id="main">
-    <a class="back-link" href="../index.html#log">← 返回首页</a>
-    <p class="eyebrow">开发日志 · 2026-10-19</p>
-    <h1>第一阶段收尾，居民行为接线</h1>
-    <p class="article-lead">世界已经能独立运转。鹿进入世界，居民能看见周围的格位，再决定下一步。建造、寻路和材料搬运还在做，第二阶段没有收官。</p>
+    <a class="back" href="../index.html#notes">← 返回</a>
+    <p class="article-date">2026-10-19</p>
+    <h1>第一阶段收尾：居民行为接入</h1>
+    <p class="article-lead">世界模拟已经能够独立运转。居民已接入感知、决策与行动骨架；建造、寻路与材料搬运仍在开发中。</p>
 
     <section>
       <h2>进展</h2>
-      <p>第一阶段收尾：没有居民的时候，物质、时间、昼夜、地形也能自己运转。</p>
-      <p>鹿已经接入世界。居民有了感知、决策和行动的骨架，能根据周围的情况选择下一步。建造、寻路和材料搬运还在补。</p>
+      <p>第一阶段完成：在没有居民的情况下，物质、时间、昼夜与地形能够持续运转。</p>
+      <p>居民已经接入世界，并具备感知、决策与行动的骨架，能够根据周围环境选择下一步。建造、寻路与材料搬运仍在补全。</p>
     </section>
 
     <section>
       <h2>学到什么</h2>
-      <p>先把世界做成能自己转的系统，再让居民进去生活。顺序反过来，世界很容易变成一张只有居民在场才成立的地图。</p>
-      <p>行为接上之后，问题不再只属于某一个系统。感知给了什么、决策怎么选、行动有没有执行，任何一处含糊，最后都会表现成“这个人看起来很怪”。</p>
+      <p>先建立能够独立运转的世界，再让居民进入其中。顺序反过来，世界容易变成只有居民在场才成立的地图。</p>
+      <p>行为系统接入后，问题往往出现在系统边界：感知提供了什么、决策如何选择、行动是否执行，任何一处不清晰，都会表现为行为异常。</p>
     </section>
 
     <section>
       <h2>踩的坑</h2>
-      <p>这一阶段最难的不是让居民动起来，而是让他停下来之后仍然说得通。建造链路还没有完全接上；寻路、搬运和施工之间的边界，需要一起理清。</p>
+      <p>这一阶段的主要难点在于让动作在中断后仍然可以解释。建造链路尚未完全接通，寻路、搬运与施工之间的边界仍需明确。</p>
     </section>
 
     <section>
       <h2>下一截</h2>
-      <p>把建造链路补完：找路、搬材料、搭起来。目标是让一次建造从头到尾都能被看见，而不是只看到结果。</p>
+      <p>完成建造链路：寻路、搬运材料、完成搭建。目标是让一次建造过程从头到尾都可以被观察，而不只是呈现最终结果。</p>
     </section>
 
     <footer class="article-footer">
-      <a href="../index.html#log">← 返回首页</a>
-      <a href="https://github.com/BreezedropSleezes/small-world">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="../index.html#notes">← 返回</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
     </footer>
   </main>
 </body>

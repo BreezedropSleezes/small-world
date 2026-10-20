@@ -3,471 +3,101 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4ebd6">
-  <title>BreezedropSleezes · 会自己运转的体素世界</title>
-  <meta name="description" content="独立开发者 BreezedropSleezes 的个人主页：一个没有玩家也会继续运转的体素世界。">
-  <link rel="stylesheet" href="site.css?v=12">
+  <meta name="theme-color" content="#141513">
+  <title>BreezedropSleezes · 体素世界模拟</title>
+  <meta name="description" content="独立开发者 BreezedropSleezes：正在开发一个没有玩家也会持续运转的体素世界。">
+  <link rel="stylesheet" href="site.css?v=5">
 </head>
 <body>
-  <a class="skip" href="#main">跳到正文</a>
+  <header class="hero" id="top">
+    <div class="hero-media" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="assets/world-800.webp 800w, assets/world-1600.webp 1600w" sizes="100vw">
+        <img src="assets/world-1600.jpg" srcset="assets/world-800.jpg 800w, assets/world-1600.jpg 1600w" sizes="100vw" width="1600" height="900" alt="">
+      </picture>
+    </div>
 
-  <header class="site-header">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true">B</span>
-      <span class="brand-name">BreezedropSleezes</span>
-    </a>
     <nav class="site-nav" aria-label="主导航">
-      <a href="#project">项目</a>
-      <a href="#shots">画面</a>
-      <a href="#progress">进度</a>
-      <a href="#tech">技术</a>
-      <a href="#log">日志</a>
-      <a href="#about">关于</a>
-      <a class="nav-github" href="https://github.com/BreezedropSleezes/small-world">GitHub <span aria-hidden="true">↗</span></a>
+      <a class="brand" href="#top">BreezedropSleezes</a>
+      <div class="nav-links">
+        <a href="#now">现在</a>
+        <a href="#resident">居民</a>
+        <a href="#notes">日志</a>
+        <a href="#about">关于</a>
+        <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+      </div>
     </nav>
+
+    <div class="hero-copy">
+      <p class="hero-kicker">独立开发 · 体素世界模拟</p>
+      <h1>我在开发一个<br><em>自主运转</em>的体素世界。</h1>
+      <p class="hero-lead">在没有玩家持续操作的情况下，居民仍会感到饥饿与疲劳，自行寻找食物、休息并避开危险。世界的时间、温度与物质状态也会继续变化。</p>
+      <p class="hero-status">开发中 · 第二阶段：居民行为</p>
+      <a class="hero-link" href="#now">查看当前进度 <span aria-hidden="true">↓</span></a>
+    </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow">独立开发 · 体素世界模拟</p>
-        <h1>我在做一个<br><span class="h1-line"><em>会自己运转</em>的世界。</span></h1>
-        <p class="lead">没有玩家操作时，居民也会饿、会累，会自己找食物、找地方休息，也会避开危险。世界按自己的规则继续变化。</p>
-        <p class="hero-note">我想做的不是一张等待玩家推动的地图，而是一个没有主角也能成立的地方。</p>
-        <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>当前阶段：居民行为 · 建造与寻路进行中</p>
-        <div class="actions">
-          <a class="button" href="#progress">看现在做到哪</a>
-          <a class="text-link" href="https://github.com/BreezedropSleezes/small-world">GitHub · 公开记录 <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
+  <main class="page">
+    <section class="section" id="now">
+      <p class="section-kicker">现在</p>
+      <h2>世界模拟已经可以独立运行，居民行为仍在完善。</h2>
+      <p>在没有居民的情况下，物质、时间、昼夜与地形仍能持续运转。居民已经能够感知周围环境、做出决定并执行行动；建造、寻路与材料搬运仍在开发中。</p>
 
-      <figure class="hero-shot">
-        <div class="shot-frame">
-          <span class="shot-badge">开发中</span>
-          <picture>
-            <source type="image/webp" srcset="assets/world-800.webp 800w, assets/world-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img src="assets/world-1600.jpg" srcset="assets/world-800.jpg 800w, assets/world-1600.jpg 1600w" sizes="(max-width: 900px) 92vw, 46vw" width="1600" height="900" alt="体素世界的游戏内画面，包含地形、植被与光照" fetchpriority="high">
-          </picture>
-          <figcaption>
-            <span class="shot-kicker">游戏内画面</span>
-            <span class="shot-title">世界视觉 · 当前开发版本</span>
-          </figcaption>
-        </div>
+      <dl class="status-list">
+        <div><dt>世界模拟</dt><dd class="is-done">已完成</dd><dd>物质、时间、温度、地形</dd></div>
+        <div><dt>居民智能</dt><dd class="is-active">进行中</dd><dd>需求、感知、决策、行动</dd></div>
+        <div><dt>行为系统</dt><dd class="is-active">进行中</dd><dd>寻路、建造、采集、搬运</dd></div>
+        <div><dt>基础系统</dt><dd class="is-done">已接入</dd><dd>统一时间轴、种子、配置</dd></div>
+      </dl>
+
+      <p class="small">玩家引导将在居民能够稳定生活后加入。</p>
+    </section>
+
+    <figure class="inline-figure">
+      <picture>
+        <source type="image/webp" srcset="assets/village-800.webp 800w, assets/village-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px">
+        <img src="assets/village-1600.jpg" srcset="assets/village-800.jpg 800w, assets/village-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="村庄整体的游戏内画面" loading="lazy">
+      </picture>
+      <figcaption>村庄整体 · 世界模拟已可独立运行</figcaption>
+    </figure>
+
+    <section class="section" id="resident">
+      <p class="section-kicker">居民</p>
+      <h2>居民如何自主生活</h2>
+      <p>居民根据需求、环境与已有计划自主选择行动，不依赖玩家逐条指令。每次决策都会转化为具体行动，并通过结果判断目标是否推进。</p>
+      <p>高层模型负责任务选择，具体执行由规则系统与行为配方完成。模型不直接控制每一次动作，模拟仍保持确定性。</p>
+      <a class="inline-link" href="resident.html">查看居民智能的技术结构 <span aria-hidden="true">→</span></a>
+
+      <figure class="inline-figure">
+        <picture>
+          <source type="image/webp" srcset="assets/resident-800.webp 800w, assets/resident-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px">
+          <img src="assets/resident-1600.jpg" srcset="assets/resident-800.jpg 800w, assets/resident-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="居民近景的游戏内画面" loading="lazy">
+        </picture>
+        <figcaption>居民近景 · 感知、决策与行动已接入</figcaption>
       </figure>
     </section>
 
-    <section class="section" id="project">
-      <div class="section-head">
-        <p class="eyebrow">项目</p>
-        <h2>一个没有玩家也会继续的世界</h2>
-      </div>
-      <div class="prose">
-        <p>这是一个体素模拟项目。地形、材料、时间、昼夜、温度和燃烧共享同一套规则。树被砍倒，食物被吃掉，材料被搬走，世界会留下痕迹。</p>
-        <p>居民有饥饿和疲劳。他们会观察周围，决定去哪里、做什么，再通过砍伐、采集、搬运改变世界。玩家以后可以引导村庄，但不会代替居民生活。</p>
-        <p class="statement">我先要解决的是一个观察问题：看着一个居民走过去，能不能说出他为什么这么走。建造和玩家指令都放在这之后。</p>
-        <div class="loop-strip" aria-label="居民行为回路">
-          <span>需求衰减</span><i aria-hidden="true">→</i>
-          <span>感知</span><i aria-hidden="true">→</i>
-          <span>决策</span><i aria-hidden="true">→</i>
-          <span>行动</span><i aria-hidden="true">→</i>
-          <span>世界变化</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="shots">
-      <div class="section-head">
-        <p class="eyebrow">画面</p>
-        <h2>现在能看到什么</h2>
-        <p class="section-intro">当前开发版本的游戏内截图。第二阶段尚未收官，画面会继续变。</p>
-      </div>
-      <div class="gallery">
-        <figure class="shot-card">
-          <picture>
-            <source type="image/webp" srcset="assets/village-800.webp 800w, assets/village-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 28vw">
-            <img src="assets/village-1600.jpg" srcset="assets/village-800.jpg 800w, assets/village-1600.jpg 1600w" sizes="(max-width: 900px) 92vw, 28vw" width="1600" height="900" alt="村庄整体的游戏内画面" loading="lazy">
-          </picture>
-          <figcaption>
-            <span>01</span>
-            <strong>村庄整体</strong>
-            <small>居民生活与建造的场所</small>
-          </figcaption>
-        </figure>
-        <figure class="shot-card">
-          <picture>
-            <source type="image/webp" srcset="assets/resident-800.webp 800w, assets/resident-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 28vw">
-            <img src="assets/resident-1600.jpg" srcset="assets/resident-800.jpg 800w, assets/resident-1600.jpg 1600w" sizes="(max-width: 900px) 92vw, 28vw" width="1600" height="900" alt="居民近景的游戏内画面" loading="lazy">
-          </picture>
-          <figcaption>
-            <span>02</span>
-            <strong>居民近景</strong>
-            <small>感知、决定、行动</small>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" id="progress">
-      <div class="section-head">
-        <p class="eyebrow">进度</p>
-        <h2>现在做到哪</h2>
-        <p class="section-intro">项目按三个阶段推进。这里只写已经能看见的部分。</p>
-      </div>
-      <ol class="timeline">
-        <li class="timeline-item is-done">
-          <div class="timeline-meta"><span class="phase">01</span><span class="pill">已完成</span></div>
-          <div class="timeline-body">
-            <h3>世界自转</h3>
-            <p>没有居民时，物质、时间、昼夜、地形也能独立运转。</p>
-          </div>
-        </li>
-        <li class="timeline-item is-active">
-          <div class="timeline-meta"><span class="phase">02</span><span class="pill">进行中</span></div>
-          <div class="timeline-body">
-            <h3>居民自己活</h3>
-            <p>鹿已经进入世界；居民能感知周围、做出决定并执行行动。建造、寻路和材料搬运还在补。这一阶段尚未收官。</p>
-          </div>
-        </li>
-        <li class="timeline-item">
-          <div class="timeline-meta"><span class="phase">03</span><span class="pill">未开始</span></div>
-          <div class="timeline-body">
-            <h3>玩家引导村庄</h3>
-            <p>等居民能稳定生活之后，再让玩家参与进来。</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section class="section" id="tech">
-      <div class="section-head">
-        <p class="eyebrow">技术</p>
-        <h2>系统怎么运转</h2>
-      </div>
-      <div class="arch">
-        <div class="arch-toolbar">
-          <p class="arch-kicker">结构</p>
-          <div class="arch-tabs">
-            <input class="arch-input" type="radio" name="arch-view" id="arch-overview" checked>
-            <label for="arch-overview">整体</label>
-            <input class="arch-input" type="radio" name="arch-view" id="arch-world">
-            <label for="arch-world">世界</label>
-            <input class="arch-input" type="radio" name="arch-view" id="arch-agent">
-            <label for="arch-agent">居民</label>
-            <input class="arch-input" type="radio" name="arch-view" id="arch-clock">
-            <label for="arch-clock">时钟</label>
-          </div>
-          <ul class="arch-legend">
-            <li><i class="arch-swatch" aria-hidden="true"></i>已接通</li>
-            <li><i class="arch-swatch is-dash" aria-hidden="true"></i>后置</li>
-            <li><i class="arch-swatch is-hot" aria-hidden="true"></i>进行中</li>
-          </ul>
-        </div>
-
-        <div class="arch-viewport">
-          <article class="arch-board" data-panel="overview" aria-label="整体架构">
-            <div class="arch-frame">
-              <span class="arch-c tl" aria-hidden="true"></span>
-              <span class="arch-c tr" aria-hidden="true"></span>
-              <span class="arch-c bl" aria-hidden="true"></span>
-              <span class="arch-c br" aria-hidden="true"></span>
-              <div class="arch-split">
-                <div class="arch-stack">
-                  <div class="arch-player">
-                    <span class="arch-layer-idx">00</span>
-                    <strong>玩家</strong>
-                    <div class="arch-node is-pending"><strong>引导村庄</strong><small>指令以后再来</small></div>
-                    <span class="arch-tag">后置</span>
-                  </div>
-                  <div class="arch-join">看</div>
-                  <div class="arch-layer is-view">
-                    <div class="arch-layer-head">
-                      <span class="arch-layer-idx">01</span>
-                      <strong>画面</strong>
-                      <span class="arch-tag">只读</span>
-                    </div>
-                    <div class="arch-nodes">
-                      <div class="arch-node"><strong>体素渲染</strong><small>地形与水</small></div>
-                      <div class="arch-node"><strong>调试叠加</strong><small>路径 / 原因</small></div>
-                    </div>
-                  </div>
-                  <div class="arch-join">读写</div>
-                  <div class="arch-layer is-agent">
-                    <div class="arch-layer-head">
-                      <span class="arch-layer-idx">02</span>
-                      <strong>居民</strong>
-                      <span class="arch-tag is-hot">进行中</span>
-                    </div>
-                    <div class="arch-nodes">
-                      <div class="arch-node"><strong>需求</strong><small>饥饿 / 疲劳</small></div>
-                      <div class="arch-node"><strong>感知</strong><small>食物 / 同伴 / 危险</small></div>
-                      <div class="arch-node"><strong>决策</strong><small>去哪里 / 做什么</small></div>
-                      <div class="arch-node"><strong>行动</strong><small>砍伐 / 采集 / 搬运</small></div>
-                      <div class="arch-node"><strong>记忆</strong><small>刚才发生的</small></div>
-                      <div class="arch-node is-hot"><strong>寻路</strong><small>走到邻格</small></div>
-                    </div>
-                  </div>
-                  <div class="arch-join">占格</div>
-                  <div class="arch-layer is-entity">
-                    <div class="arch-layer-head">
-                      <span class="arch-layer-idx">03</span>
-                      <strong>实体</strong>
-                    </div>
-                    <div class="arch-nodes">
-                      <div class="arch-node"><strong>登记</strong><small>谁在世界上</small></div>
-                      <div class="arch-node"><strong>空间索引</strong><small>哪一格有什么</small></div>
-                      <div class="arch-node"><strong>身体</strong><small>位置 / 生命</small></div>
-                      <div class="arch-node"><strong>库存</strong><small>手上和背上</small></div>
-                    </div>
-                  </div>
-                  <div class="arch-join">转化</div>
-                  <div class="arch-layer is-world">
-                    <div class="arch-layer-head">
-                      <span class="arch-layer-idx">04</span>
-                      <strong>世界模拟</strong>
-                      <span class="arch-tag is-done">已完成</span>
-                    </div>
-                    <div class="arch-nodes">
-                      <div class="arch-node"><strong>物质</strong><small>体素与材料</small></div>
-                      <div class="arch-node"><strong>时间</strong><small>同一节拍</small></div>
-                      <div class="arch-node"><strong>昼夜</strong></div>
-                      <div class="arch-node"><strong>温度</strong></div>
-                      <div class="arch-node"><strong>燃烧</strong></div>
-                      <div class="arch-node"><strong>液体</strong></div>
-                      <div class="arch-node"><strong>地形</strong><small>开局生成</small></div>
-                    </div>
-                  </div>
-                  <div class="arch-join">驱动</div>
-                  <div class="arch-layer is-base">
-                    <div class="arch-layer-head">
-                      <span class="arch-layer-idx">05</span>
-                      <strong>确定性底座</strong>
-                    </div>
-                    <div class="arch-nodes">
-                      <div class="arch-node"><strong>种子</strong><small>同一份世界</small></div>
-                      <div class="arch-node"><strong>分钟节拍</strong><small>不跟帧率走</small></div>
-                      <div class="arch-node"><strong>配置表</strong><small>数值集中在此</small></div>
-                    </div>
-                  </div>
-                </div>
-                <aside class="arch-notes">
-                  <h3>怎么读</h3>
-                  <p><strong>从上往下是剖面。</strong>最上层是画面，中间是居民与实体，底层是世界模拟和确定性底座。</p>
-                  <p><strong>材料决定变化。</strong>温度、燃烧、液体读写同一份体素，彼此不点名。</p>
-                  <p><strong>居民改世界，画面只看。</strong>决策不直接改格子；砍、采、搬才留下痕迹。</p>
-                  <p><strong>同一种子，同一种结果。</strong>关掉玩家，世界仍按这张剖面转。</p>
-                </aside>
-              </div>
-            </div>
-            <footer class="arch-plate">
-              <span class="arch-plate-id">01 / 04</span>
-              <b>整体架构</b>
-              <span>剖面 · 画面到种子</span>
-            </footer>
-          </article>
-
-          <article class="arch-board" data-panel="world" aria-label="世界模拟">
-            <div class="arch-frame">
-              <span class="arch-c tl" aria-hidden="true"></span>
-              <span class="arch-c tr" aria-hidden="true"></span>
-              <span class="arch-c bl" aria-hidden="true"></span>
-              <span class="arch-c br" aria-hidden="true"></span>
-              <div class="world-beat">
-                <strong>时间节拍</strong>
-                <div class="world-beat-line" aria-hidden="true"></div>
-              </div>
-              <div class="world-systems">
-                <div class="arch-node"><strong>昼夜</strong><small>阶段更替</small></div>
-                <div class="arch-node"><strong>温度</strong><small>热在格子里走</small></div>
-                <div class="arch-node"><strong>燃烧</strong><small>蔓延 · 产热</small></div>
-                <div class="arch-node"><strong>液体</strong><small>流 · 结冰</small></div>
-                <div class="arch-node"><strong>再生</strong><small>采空再长</small></div>
-              </div>
-              <div class="world-core">
-                <div class="world-side">
-                  <span>开局一次</span>
-                  <strong>地形生成</strong>
-                  <p>种子写下地形和水域。之后由规则继续。</p>
-                </div>
-                <figure>
-                  <svg class="vx-map" viewBox="0 0 180 72" role="img" aria-label="体素格子示意：地面、水和一棵树">
-                    <rect width="180" height="72" fill="#fffbf3"></rect>
-                    <rect x="0" y="48" width="180" height="24" fill="#3f3628" opacity="0.12"></rect>
-                    <rect x="120" y="48" width="60" height="24" fill="#7bb5ce" opacity="0.42"></rect>
-                    <rect x="48" y="24" width="12" height="24" fill="#386243" opacity="0.42"></rect>
-                    <rect x="36" y="36" width="12" height="12" fill="#386243" opacity="0.28"></rect>
-                    <rect x="60" y="36" width="12" height="12" fill="#386243" opacity="0.22"></rect>
-                    <path d="M0 48h180M0 60h180M120 48v24" fill="none" stroke="#c4b48a" stroke-opacity="0.35"></path>
-                    <g stroke="#c4b48a" stroke-opacity="0.5" stroke-width="0.6">
-                      <path d="M0 0h180v72H0z" fill="none"></path>
-                      <path d="M12 0v72M24 0v72M36 0v72M48 0v72M60 0v72M72 0v72M84 0v72M96 0v72M108 0v72M120 0v72M132 0v72M144 0v72M156 0v72M168 0v72" fill="none"></path>
-                      <path d="M0 12h180M0 24h180M0 36h180M0 48h180M0 60h180" fill="none"></path>
-                    </g>
-                  </svg>
-                  <figcaption class="vx-caption">体素 / 材料 · 共用一份格子</figcaption>
-                </figure>
-                <div class="world-side is-read">
-                  <span>只读</span>
-                  <strong>渲染</strong>
-                  <p>画面消费格子，不写回模拟。</p>
-                </div>
-              </div>
-              <aside class="arch-notes world-foot">
-                <p><strong>相互作用由规则产生。</strong>火产热，水灭火，冷使水结冰。没有一条单独剧本把这三件事写在一起。</p>
-              </aside>
-            </div>
-            <footer class="arch-plate">
-              <span class="arch-plate-id">02 / 04</span>
-              <b>世界模拟</b>
-              <span>已完成 · 没有居民也能转</span>
-            </footer>
-          </article>
-
-          <article class="arch-board" data-panel="agent" aria-label="居民结构">
-            <div class="arch-frame">
-              <span class="arch-c tl" aria-hidden="true"></span>
-              <span class="arch-c tr" aria-hidden="true"></span>
-              <span class="arch-c bl" aria-hidden="true"></span>
-              <span class="arch-c br" aria-hidden="true"></span>
-              <ol class="agent-ribbon">
-                <li>需求</li>
-                <li>感知</li>
-                <li>决策</li>
-                <li>行动</li>
-                <li class="is-loop">物质变化</li>
-              </ol>
-              <div class="agent-cols">
-                <section class="agent-col">
-                  <header>看见</header>
-                  <div class="arch-nodes">
-                    <div class="arch-node"><strong>感知快照</strong><small>周围的食物、同伴、危险</small></div>
-                    <div class="arch-node"><strong>记忆切片</strong><small>刚才做成了什么</small></div>
-                    <div class="arch-node"><strong>身体状态</strong><small>饥饿、疲劳、位置</small></div>
-                  </div>
-                </section>
-                <section class="agent-col is-decide">
-                  <header>决定</header>
-                  <div class="arch-nodes">
-                    <div class="arch-node"><strong>规则决策</strong><small>始终在场，给出下一步</small></div>
-                    <div class="arch-node is-pending"><strong>战略决策</strong><small>更长时段的计划 · 后置</small></div>
-                    <div class="arch-node is-pending"><strong>战术决策</strong><small>即时反应 · 后置</small></div>
-                    <div class="arch-node"><strong>只读快照</strong><small>决策不直接改格子</small></div>
-                  </div>
-                </section>
-                <section class="agent-col">
-                  <header>动手</header>
-                  <div class="arch-nodes">
-                    <div class="arch-node"><strong>行动配方</strong><small>砍伐 / 采集 / 搬运</small></div>
-                    <div class="arch-node is-hot"><strong>寻路</strong><small>走到邻格 · 进行中</small></div>
-                    <div class="arch-node"><strong>改世界</strong><small>格子留下痕迹</small></div>
-                  </div>
-                </section>
-              </div>
-              <div class="agent-strip">
-                <h3>一条能看懂的因果</h3>
-                <ol>
-                  <li><b>饥饿不足</b></li>
-                  <li><b>看见浆果</b></li>
-                  <li><b>决定采集</b></li>
-                  <li><b>走到邻格</b></li>
-                  <li><b>浆果丛变空</b></li>
-                  <li><b>吃下去</b></li>
-                </ol>
-              </div>
-            </div>
-            <footer class="arch-plate">
-              <span class="arch-plate-id">03 / 04</span>
-              <b>居民</b>
-              <span>进行中 · 每一步能对上画面</span>
-            </footer>
-          </article>
-
-          <article class="arch-board" data-panel="clock" aria-label="确定性时钟">
-            <div class="arch-frame">
-              <span class="arch-c tl" aria-hidden="true"></span>
-              <span class="arch-c tr" aria-hidden="true"></span>
-              <span class="arch-c bl" aria-hidden="true"></span>
-              <span class="arch-c br" aria-hidden="true"></span>
-              <div class="clock-rail">
-                <div class="clock-seed">
-                  <span>种子</span>
-                  <strong>同一份</strong>
-                </div>
-                <div class="clock-track">
-                  <span class="clock-playhead" aria-hidden="true"></span>
-                  <strong>分钟节拍</strong>
-                  <small>所有系统共用一条时间轴</small>
-                </div>
-              </div>
-              <div class="clock-subs">
-                <div class="arch-node"><strong>昼夜</strong><small>阶段</small></div>
-                <div class="arch-node"><strong>温度</strong><small>传热</small></div>
-                <div class="arch-node"><strong>需求</strong><small>衰减</small></div>
-                <div class="arch-node"><strong>行为</strong><small>逐步执行</small></div>
-                <div class="arch-node"><strong>燃烧</strong><small>燃耗</small></div>
-              </div>
-              <div class="clock-eq" aria-label="同一种子加同一输入得到同一种结果">
-                <span>同一种子</span>
-                <i>+</i>
-                <span>同一输入</span>
-                <i>=</i>
-                <span>同一种结果</span>
-              </div>
-              <p class="clock-not"><b>模拟不跟随帧率</b>，也不靠随机数制造变化。数值集中在配置表里，不散落在规则实现中。</p>
-            </div>
-            <footer class="arch-plate">
-              <span class="arch-plate-id">04 / 04</span>
-              <b>时钟</b>
-              <span>确定性 · 可回放</span>
-            </footer>
-          </article>
-        </div>
-      </div>
-
-      <p class="tech-note">Unity / C#。数值集中在配置里；方向、规则和验收由我负责，AI 辅助写代码和做检查。</p>
-    </section>
-
-    <section class="section" id="log">
-      <div class="section-head">
-        <p class="eyebrow">日志</p>
-        <h2>开发日志</h2>
-      </div>
-      <a class="log-card" href="log/2026-10-19.html">
-        <div class="log-date">2026-10-19</div>
-        <div class="log-main">
-          <h3>第一阶段收尾，居民行为接线</h3>
-          <p>世界已经能独立运转。鹿进入世界，居民能看见周围的格位，再决定下一步。建造、寻路和材料搬运还在做。</p>
-        </div>
-        <span class="log-arrow" aria-hidden="true">→</span>
+    <section class="section" id="notes">
+      <p class="section-kicker">日志</p>
+      <h2>开发日志</h2>
+      <a class="note-row" href="log/2026-10-19.html?v=3">
+        <span class="date">2026-10-19</span>
+        <span class="title">第一阶段收尾：居民行为接入</span>
+        <span class="arrow" aria-hidden="true">→</span>
       </a>
     </section>
 
-    <section class="section about" id="about">
-      <div class="about-mark" aria-hidden="true">B</div>
-      <div class="section-head">
-        <p class="eyebrow">关于</p>
-        <h2>关于我</h2>
-      </div>
-      <div class="prose">
-        <p>我是 BreezedropSleezes，独立开发者。我喜欢看系统自己跑起来，再从画面里反推它为什么这么跑。</p>
-        <p>这个项目从世界规则开始：先让世界成立，再考虑玩家怎么参与。我在意的是，一个没有玩家推动的世界，能不能仍然让人看懂。</p>
-        <p>目前在做第二阶段：把居民从“看见”接到“建造”，让一次完整的生活流程能被观察。</p>
-        <p>我负责方向、规则和验收；实现上用 Unity 和 C#，并借助 AI 做代码起草、资料检索和重复检查。工具不替我做决定。</p>
-        <p>如果你也在做模拟、智能体或体素方向的东西，欢迎在 <a href="https://github.com/BreezedropSleezes">GitHub</a> 找我。</p>
-      </div>
-    </section>
-
-    <section class="download-note" id="download">
-      <div>
-        <p class="eyebrow">下载</p>
-        <h2>第一个可玩版本还在准备中</h2>
-        <p>发布后会放在 <a href="https://github.com/BreezedropSleezes/small-world/releases">GitHub Releases</a>。现在还没有 Windows 包。</p>
-      </div>
+    <section class="section" id="about">
+      <p class="section-kicker">关于</p>
+      <h2>关于我</h2>
+      <p>我是一名独立开发者，正在开发一款以体素世界和自主居民为核心的模拟游戏。项目从世界规则入手，先建立能够独立运转的模拟，再引入玩家参与。</p>
+      <p>我负责设计方向、规则定义与验收；实现使用 Unity 和 C#，AI 辅助代码起草、资料检索与重复检查。</p>
+      <p>如果你也在从事模拟、智能体或体素方向的工作，欢迎通过 <a href="https://github.com/BreezedropSleezes">GitHub</a> 联系我。</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <span>© 2026 BreezedropSleezes</span>
-    <span>这个世界 · 开发中</span>
     <a href="#top">回到顶部 ↑</a>
   </footer>
 </body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>居民智能 · BreezedropSleezes</title>
+  <meta name="description" content="居民智能的设计：目标、处境、评估、执行、反思与反馈。">
+  <link rel="stylesheet" href="site.css?v=5">
+</head>
+<body>
+  <header class="page-header">
+    <a class="brand" href="index.html">BreezedropSleezes</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#now">现在</a>
+      <a href="index.html#resident">居民</a>
+      <a href="index.html#notes">日志</a>
+      <a href="index.html#about">关于</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main class="resident-page">
+    <a class="back" href="index.html#resident">← 返回</a>
+    <p class="section-kicker">居民智能</p>
+    <h1>居民如何自主生活</h1>
+    <p class="resident-lead">居民的行为由持续循环构成：设定目标、读取处境、评估下一步、执行行动、检查结果，再根据结果调整。</p>
+
+    <p>每个居民同时只有一条主任务。系统在决策点读取其能力、记忆、物品与环境，评估可行的下一步，再交给行为系统执行。</p>
+
+    <figure class="agent-diagram">
+      <div class="diagram-scroll">
+        <img src="assets/agent-architecture.svg?v=2" width="1200" height="760" alt="居民智能结构图：左侧为决策循环，右侧为角色设定、能力列表、工具列表和游戏系统组成的决策上下文。">
+      </div>
+      <p class="diagram-hint">左右滑动查看完整结构</p>
+      <figcaption>左侧是居民的决策循环；右侧是决策时读取的上下文，二者共同决定下一步行动。</figcaption>
+    </figure>
+
+    <section>
+      <h2>两层循环</h2>
+      <p><strong>外环：目标与计划</strong>　在日界或立即思考时生成一条主任务。高层模型可以参与目标选择，规则降级路径也可以生成任务。</p>
+      <p><strong>内环：决策与执行</strong>　在每个决策点按威胁、需求、工作、空闲的顺序选择行为。工作层将目标拆解为下一步可执行动作；底层动作由规则与行为配方执行，不依赖每个模拟节拍都调用模型。</p>
+    </section>
+
+    <section>
+      <h2>决策上下文</h2>
+      <p><strong>角色设定</strong>：居民的身份、偏好与行为边界。</p>
+      <p><strong>能力列表</strong>：感知、交互、系统、基础四类可用动作；感知类仍在补全。</p>
+      <p><strong>工具列表</strong>：查看环境、计划、任务、反思与更新状态；部分工具尚未接入。</p>
+      <p><strong>系统说明</strong>：种植、建造、制造等系统的可用清单与机制说明。</p>
+    </section>
+
+    <section>
+      <h2>当前进度</h2>
+      <p>目标、评估、反馈与反思的规则层已经接入；决策上下文与能力目录仍在补全。高层模型当前只负责任务选择，不直接控制具体执行。感知中的寻找与观察、群体目标和社会承诺尚未接入。</p>
+    </section>
+
+    <figure class="inline-figure">
+      <picture>
+        <source type="image/webp" srcset="assets/resident-800.webp 800w, assets/resident-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px">
+        <img src="assets/resident-1600.jpg" srcset="assets/resident-800.jpg 800w, assets/resident-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="居民近景的游戏内画面" loading="lazy">
+      </picture>
+      <figcaption>居民近景 · 感知、决策与行动已接入</figcaption>
+    </figure>
+
+    <footer class="article-footer">
+      <a href="index.html#resident">← 返回</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
