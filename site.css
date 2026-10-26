@@ -401,6 +401,37 @@ h2 {
 .article p,
 .resident-page p { margin: 0 0 1rem; }
 
+.article h3 {
+  margin: 1.4rem 0 0.55rem;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.article ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.article li { margin: 0 0 0.55rem; }
+
+.article pre {
+  margin: 0 0 1.2rem;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.article code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.86em;
+}
+
+.article pre code { font-size: 0.82rem; }
+
 .article-footer {
   display: flex;
   justify-content: space-between;

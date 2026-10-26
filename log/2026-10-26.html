@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4ee">
-  <title>感知系统 · BreezedropSleezes</title>
-  <meta name="description" content="开发日志 2026-10-26：居民感知定义为范围内带遮挡标记的列表查询，椭圆视野已可在游戏中核对。">
-  <link rel="stylesheet" href="../site.css?v=6">
+  <title>技术笔记第一期——感知系统 · BreezedropSleezes</title>
+  <meta name="description" content="技术笔记第一期——感知系统。Agent的感知被定义为在一定范围内，对该范围内有限的物体的带有遮挡的列表查询能力。">
+  <link rel="stylesheet" href="../site.css?v=7">
 </head>
 <body>
   <header class="top">
@@ -23,41 +23,87 @@
 
   <main class="article" id="main">
     <a class="back" href="../index.html#notes">← 返回</a>
-    <p class="article-date">2026-10-26</p>
-    <h1>感知系统</h1>
-    <p class="article-lead">居民要在设定的世界里自主生存，必须能取得周围的信息。这一期把感知写成：在一定范围内，对有限物体做带遮挡标记的列表查询。</p>
+    <p class="article-date">2026.10.26</p>
+    <h1>技术笔记第一期——感知系统</h1>
 
     <figure class="inline-figure">
       <picture>
         <source type="image/webp" srcset="../assets/perception-800.webp 800w, ../assets/perception-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px">
-        <img src="../assets/perception-1600.jpg" srcset="../assets/perception-800.jpg 800w, ../assets/perception-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="暂停后查看一名居民的感知列表，场景中用线框标出椭圆感知范围">
+        <img src="../assets/perception-1600.jpg" srcset="../assets/perception-800.jpg 800w, ../assets/perception-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="感知系统屏幕截图">
       </picture>
-      <figcaption>暂停后的感知快照。左侧列出当前看见的物体，场景中的线框是感知范围。</figcaption>
     </figure>
 
     <section>
-      <h2>进展</h2>
-      <p>感知范围做成椭圆：居民站在其中一个焦点上，前方视野更长，后方较短；前后为长轴，左右为短轴。长半轴 32 格，焦点距 16 格。判断一个目标是否在范围内时，先把它相对居民的位置转到椭圆坐标系，再用整数比较，避免开方。</p>
-      <p>遮挡从眼睛高度沿水平方向检查到目标之间的格子。被体素或其他物体挡住时，该物体仍会出现在感知列表里，但会被标记，并且不作为决策依据。</p>
-      <p>列表来自两类来源。实体按注册表逐一判断是否落在椭圆内。树、浆果丛等世界物体则扫描椭圆覆盖的地面列，逐格计算距离与遮挡。</p>
-      <p>感知不是每一帧都做。定时感知按间隔刷新；需要决策或收到事件时，再做一次事件感知，保证决策用的是当前列表。</p>
-      <p>验收方式是在场景中画出感知范围，并在调试面板中列出每位居民当前看见的内容。测试时可以选中对应居民并暂停，核对列表是否正确、有无遗漏。上方截图是一次暂停后的快照。</p>
+      <h2>什么是Agents的感知？</h2>
+      <ul>
+        <li>要回答这个问题，首先我们需要回答，为什么要做Agent的感知？回想项目目标，我想做的是一个甚至是一群可以在设定的游戏世界中自主生存的Agent，因此Agent必须有一种手段，能够获取到游戏世界内的信息。</li>
+        <li>这种手段就是感知，在本项目中，Agent的感知被定义为“在一定范围内，对该范围内有限的物体的带有遮挡的列表查询能力”。即Agent可以对其所在点的一定范围内的物体进行列表查询并获取其相关信息的能力。</li>
+      </ul>
     </section>
 
     <section>
-      <h2>学到什么</h2>
-      <p>世界是三维体素，没有给物体设置碰撞体，因此没有使用引擎自带的球形重叠查询。感知是对格子和注册表的查询，而不是物理探测。</p>
-      <p>被挡住的物体仍然进入列表、但不进入决策。这样在画面上可以核对“看见了但被挡住”，而不是把它从列表里抹掉。</p>
+      <h2>本项目Agent的感知</h2>
+      <h3>感知范围设定</h3>
+      <ul>
+        <li>出于对真实视野和游戏性的双重考量，我将Agent的感知范围定义为了一个椭圆，Agent所在位置为椭圆的其中一个焦点，其前方视野更长、后方较短。前后为长轴，两侧为短轴。</li>
+      </ul>
+      <h3>感知逻辑</h3>
+      <ul>
+        <li>感知范围计算：定义椭圆参数a=32，c=16，b=27.7。Agent站在其中一个焦点上，对一个目标，首先计算其相对于Agent的格差/坐标差(dx, dz)，若该值不在椭圆内直接舍弃。随后，把Agent的朝向换算为单位向量(fx, fz)（东是 (1, 0)，北是 (0, 1)）：<br>
+          <code>u = fx·dx + fz·dz − c</code><br>
+          <code>v = fx·dz − fz·dx</code></li>
+        <li>u 是目标沿长轴、相对椭圆中心的位置。v 是它离开长轴的侧向距离。代码写成整数比较，避免开方：<br>
+          <code>long u = (long)fx * dx + (long)fz * dz - focusDistance;</code><br>
+          <code>long v = (long)fx * dz - (long)fz * dx;</code><br>
+          <code>return u * u * b2 + v * v * a2 &lt;= a2 * b2;</code></li>
+        <li>感知遮挡计算：从Agent眼睛高度“绘制”一条到目标物体的水平线，若该水平线没有被体素、其他物体遮挡，则判定为无遮挡，Agent可以将该物体作为决策的输入，若有遮挡，则该物体依然会出现在感知列表中，但是会被标记，并且不会作为决策输入依据。</li>
+      </ul>
+      <pre><code>private bool IsOccluded(VoxelCoord from, VoxelCoord to)
+{
+    // ... Bresenham 沿 (x,z) 走 ...
+    int eyeY = from.y + visionHeight;
+
+    while (x0 != x1 || z0 != z1)
+    {
+        // ... 步进 ...
+        if (x0 == x1 && z0 == z1)
+        {
+            break; // 终点格不采样
+        }
+
+        if (voxelWorld.TryGetVoxel(x0, eyeY, z0, out Voxel voxel) &amp;&amp; !voxel.IsEmpty)
+        {
+            return true;
+        }
+    }
+    return false;
+}</code></pre>
+      <h3>感知规则</h3>
+      <ul>
+        <li>实体感知：世界中的实体，挂载于实体注册表上，Agent的感知会将实体注册表中的实体都取出，依次计算一次实体到Agent的距离，若超出距离，则判定该实体不在感知范围内。</li>
+        <li>世界列感知：除了实体外世界中的其他物体，如树、浆果丛等内容。这类物体的感知，是以Agent为中心的一个椭圆范围内的实体列会被逐列扫描，每一格会先计算距离，再判断遮挡。若通过判断，则记录进感知列表中。</li>
+        <li>感知频次：Agent并不会每一帧、每一秒进行感知，其感知频次分为：定时感知和事件感知。具体为，定时感知是隔一段时间会进行一次感知刷新，作用是低频次地更新感知。事件感知是当Agent需要决策、收到事件等情况时，及时更新感知，确保决策时的感知输入是最新的。</li>
+      </ul>
     </section>
 
     <section>
-      <h2>踩的坑</h2>
-      <p>实体还没有按半径做粗筛，每次都要对全部实体计算距离。地形列和地面物体是硬扫描，范围内每一列都会查一遍。性能分析尚未进行。</p>
+      <h2>为什么选择该方案？</h2>
+      <ul>
+        <li>世界是3D体素世界，并没有设置碰撞体，因此没有使用unity传统的方案，如全图查询、OverlapSphere等。</li>
+      </ul>
+      <h3>目前尚存问题</h3>
+      <ul>
+        <li>实体没有半径粗筛，尚未添加初筛规则，会每次都对实体进行逐个求距离值并判定。</li>
+        <li>地形列和物体是硬扫，对范围内每一列进行查询。</li>
+      </ul>
     </section>
 
     <section>
-      <h2>下一截</h2>
-      <p>给实体加上范围粗筛，并对地形列扫描做性能分析。感知范围与列表已经可以在游戏中核对；寻找、观察类能力仍在补全，不把未接入的部分写成已经完成。</p>
+      <h2>如何进行验收？</h2>
+      <ul>
+        <li>Gizmos：绘制Agent的感知范围，并将每一位Agent的感知内容显示在GM面板中。在实际测试的过程中，可以点选对应Agent并暂停游戏，查看其感知内容是否正确、是否存在遗漏。</li>
+        <li>Profiler分析：尚未进行。</li>
+      </ul>
     </section>
 
     <footer class="article-footer">
