@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>感知系统 · BreezedropSleezes</title>
+  <meta name="description" content="开发日志 2026-10-26：居民感知定义为范围内带遮挡标记的列表查询，椭圆视野已可在游戏中核对。">
+  <link rel="stylesheet" href="../site.css?v=6">
+</head>
+<body>
+  <header class="top">
+    <a class="name" href="../index.html">BreezedropSleezes</a>
+    <nav aria-label="主导航">
+      <a href="../index.html">项目</a>
+      <a href="../index.html#now">现在</a>
+      <a href="../index.html#resident">居民</a>
+      <a href="../index.html#notes">日志</a>
+      <a href="../index.html#about">关于</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main class="article" id="main">
+    <a class="back" href="../index.html#notes">← 返回</a>
+    <p class="article-date">2026-10-26</p>
+    <h1>感知系统</h1>
+    <p class="article-lead">居民要在设定的世界里自主生存，必须能取得周围的信息。这一期把感知写成：在一定范围内，对有限物体做带遮挡标记的列表查询。</p>
+
+    <figure class="inline-figure">
+      <picture>
+        <source type="image/webp" srcset="../assets/perception-800.webp 800w, ../assets/perception-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px">
+        <img src="../assets/perception-1600.jpg" srcset="../assets/perception-800.jpg 800w, ../assets/perception-1600.jpg 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="暂停后查看一名居民的感知列表，场景中用线框标出椭圆感知范围">
+      </picture>
+      <figcaption>暂停后的感知快照。左侧列出当前看见的物体，场景中的线框是感知范围。</figcaption>
+    </figure>
+
+    <section>
+      <h2>进展</h2>
+      <p>感知范围做成椭圆：居民站在其中一个焦点上，前方视野更长，后方较短；前后为长轴，左右为短轴。长半轴 32 格，焦点距 16 格。判断一个目标是否在范围内时，先把它相对居民的位置转到椭圆坐标系，再用整数比较，避免开方。</p>
+      <p>遮挡从眼睛高度沿水平方向检查到目标之间的格子。被体素或其他物体挡住时，该物体仍会出现在感知列表里，但会被标记，并且不作为决策依据。</p>
+      <p>列表来自两类来源。实体按注册表逐一判断是否落在椭圆内。树、浆果丛等世界物体则扫描椭圆覆盖的地面列，逐格计算距离与遮挡。</p>
+      <p>感知不是每一帧都做。定时感知按间隔刷新；需要决策或收到事件时，再做一次事件感知，保证决策用的是当前列表。</p>
+      <p>验收方式是在场景中画出感知范围，并在调试面板中列出每位居民当前看见的内容。测试时可以选中对应居民并暂停，核对列表是否正确、有无遗漏。上方截图是一次暂停后的快照。</p>
+    </section>
+
+    <section>
+      <h2>学到什么</h2>
+      <p>世界是三维体素，没有给物体设置碰撞体，因此没有使用引擎自带的球形重叠查询。感知是对格子和注册表的查询，而不是物理探测。</p>
+      <p>被挡住的物体仍然进入列表、但不进入决策。这样在画面上可以核对“看见了但被挡住”，而不是把它从列表里抹掉。</p>
+    </section>
+
+    <section>
+      <h2>踩的坑</h2>
+      <p>实体还没有按半径做粗筛，每次都要对全部实体计算距离。地形列和地面物体是硬扫描，范围内每一列都会查一遍。性能分析尚未进行。</p>
+    </section>
+
+    <section>
+      <h2>下一截</h2>
+      <p>给实体加上范围粗筛，并对地形列扫描做性能分析。感知范围与列表已经可以在游戏中核对；寻找、观察类能力仍在补全，不把未接入的部分写成已经完成。</p>
+    </section>
+
+    <footer class="article-footer">
+      <a href="../index.html#notes">← 返回</a>
+      <a href="https://github.com/BreezedropSleezes/small-world">GitHub ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
