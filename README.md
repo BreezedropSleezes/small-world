@@ -2,7 +2,7 @@
 
 一个没有玩家操作也会继续运转的体素世界。
 
-[打开公开页](https://breezedropsleezes.github.io/small-world/) · [居民智能结构](https://breezedropsleezes.github.io/small-world/resident.html) · [最新日志](https://breezedropsleezes.github.io/small-world/log/2026-10-26.html)
+[打开公开页](https://breezedropsleezes.github.io/small-world/) · [居民智能结构](https://breezedropsleezes.github.io/small-world/resident.html) · [最新日志](https://breezedropsleezes.github.io/small-world/log/2026-10-29.html)
 
 ![世界视觉](assets/world-1600.jpg)
 
@@ -36,6 +36,7 @@ Windows 版本还没有发布；构建完成后会放在 [Releases](https://gith
 
 - [首页](https://breezedropsleezes.github.io/small-world/)：项目概览、当前进度与游戏截图
 - [居民智能](https://breezedropsleezes.github.io/small-world/resident.html)：决策循环、两层循环与决策上下文
+- [2026-10-29 日志](https://breezedropsleezes.github.io/small-world/log/2026-10-29.html)：技术笔记第二期——性能分析
 - [2026-10-26 日志](https://breezedropsleezes.github.io/small-world/log/2026-10-26.html)：技术笔记第一期——感知系统
 - [2026-10-20 日志](https://breezedropsleezes.github.io/small-world/log/2026-10-20.html)：阴影抖动与模型漏光修复
 - [2026-10-19 日志](https://breezedropsleezes.github.io/small-world/log/2026-10-19.html)：第一阶段收尾记录

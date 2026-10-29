@@ -432,6 +432,51 @@ h2 {
 
 .article pre code { font-size: 0.82rem; }
 
+.article table {
+  width: 100%;
+  margin: 0.4rem 0 1.2rem;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.article th,
+.article td {
+  padding: 0.45rem 0.5rem 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article th { font-weight: 600; }
+
+.article .table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.2rem;
+}
+
+.article .table-wrap table { margin: 0; }
+
+.note-shot {
+  width: min(960px, calc(100vw - 4rem));
+  margin: 1.2rem 0 1.35rem 50%;
+  transform: translateX(-50%);
+}
+
+.note-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: #1b1b1b;
+}
+
+.note-shot figcaption {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
 .article-footer {
   display: flex;
   justify-content: space-between;
